@@ -1,0 +1,55 @@
+# cache, etc. in .local/share
+
+# download {{{
+download-retries	    5
+download-timeout	    90
+auto-reload             yes
+reload-time             90
+reload-threads          20
+#suppress-first-reload   yes 
+# }}}
+# cache {{{
+keep-articles-days  60
+max-items           50
+# }}}
+# proxy {{{
+#use-proxy			yes
+proxy				127.0.0.1:9050
+#proxy-auth          bla:blubb
+proxy-type			socks5
+# }}}
+# colors {{{
+color	background	white	black
+color	listnormal	white	black
+color	listfocus	black	white
+color	info		green	black
+color	article		white	black
+# }}}
+# apperance {{{
+show-keymap-hint        no
+show-read-feeds         yes
+show-read-articles      yes
+feedlist-format         "%3i %n %9u %t"
+articlelist-format      "%4i %f %D  %?T?| %-17T|  ?%t"
+feedlist-title-format   "%N (%u unread, %t total)%?T? - tag ‘%T’&?"
+# }}}
+# notify {{{
+notify-always   yes
+notify-format   "%f unread feeds (%n unread articles)"
+notify-screen   yes
+notify-program  "notify-send newsbeuter"
+# }}}
+# filters {{{
+define-filter   "unread"    "(unread_count > 0 or rssurl =~ \"^query\")"
+define-filter   "news"      "(tags =~ \"news\")"
+define-filter   "anime"     "(tags =~ \"anime\")"
+define-filter   "system"    "(tags =~ \"linux\" or tags =~ \"awesome\")"
+define-filter   "webcomics" "(tags =~ \"comic\")"
+# }}}
+# other stuff {{{
+user-agent              "Mozilla/5.0 (Windows NT 6.1; rv:10.0) Gecko/20100101 Firefox/10.0"
+browser                 "firefox %u"
+confirm-exit            yes
+prepopulate-query-feeds yes
+# }}}
+
