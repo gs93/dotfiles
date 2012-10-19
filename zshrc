@@ -248,7 +248,7 @@ setpromptcolor () {
 setpromtsettings() {
     HISTSIZE=15000
     SAVEHIST=15000
-    HISTFILE=$HOME/.cache/zsh/history
+    HISTFILE=$XDG_CACHE_HOME/zsh/history
     setopt APPEND_HISTORY
 } # }}}
 
@@ -320,7 +320,7 @@ setcomplete() { #  see man zshcompctl
 
     setopt completealiases
 
-    for i in $HOME/.cache/zsh/complete/*; do
+    for i in $XDG_CACHE_HOME/zsh/complete/*; do
         compctl -k "(`cat $i`)" $(basename "$i")
     done
 } # }}}
@@ -343,11 +343,12 @@ if [ "$TERM" != "dumb" ]; then
     alias ls='ls -hF --color=auto'
 fi
 
+# autostart tmux
 [[ $TERM != "screen" ]] && tmux attach && exit
 
 # ccache
 export PATH="/usr/lib/ccache/bin/:$PATH"
-export CCACHE_DIR="$HOME/.cache/ccache"
+export CCACHE_DIR="$XDG_CACHE_HOME/ccache"
 
 # stty (else ^S freeze terminal until ^Q)
 stty start undef
