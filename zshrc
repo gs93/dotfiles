@@ -59,11 +59,8 @@ setalias() {
     # 2}}}
     # random stuff {{{2
     alias cputemp='cat /proc/acpi/thermal_zone/THRM/temperature'
-    alias man='man'
-    alias bman='man -H/home/gl/Documents/scripts/man.sh'
     alias xgetrules='xprop | grep -ie "^wm_class" -e "^wm_name"'
     alias xdebug='Xephyr :1 -ac -br -noreset -screen 1152x720 &'
-    #alias shutdown='sudo shutdown -h now'
     alias shutdown='commands.sh shutdown'
     alias reboot='sudo reboot'
     alias whenn='when y | head -7 | tail -5'
@@ -72,7 +69,6 @@ setalias() {
     alias cppcheck='cppcheck --enable=all --platform=unix64 --report-progress --std=c++11'
     alias nb='newsbeuter'
     alias top15='print -l ? ${(o)history%% *} | uniq -c | sort -nr | head -n 15'
-    #alias screen-add='xrandr --output VGA1 --mode 1280x1024 --right-of LVDS1 && nitrogen --restore'
     alias screen-add='$HOME/.screenlayout/home.sh && sleep 3s && nitrogen --restore'
     alias screen-remove='xrandr --output VGA2 --off'
     alias zshsource="source $HOME/.zshrc"
