@@ -19,31 +19,25 @@ setalias() {
         cd "${1}" && ls --color=auto ;
     }
 
-    alias_rmrecent() {
+    rmrecent() {
         shred -un 3 $HOME/.local/share/recently-used.xbel ;
         touch ~/.local/share/recently-used.xbel ;
         echo "Filehistory delted." ;
     }
 
-    alias_rmhistory() {
-        shred -un 3 $HOME/.zshistory ;
-        touch ~/.zshistory ;
-        echo "Die Befehlshistory wurde gelöscht." ;
-    }
-    
-    alias_cpl() {
-        # TODO: wenn Zahl = PID (-p), wenn auch Text = Programm (-e), wenn Slash "/" enthalten, dann Pfad (-P)
+    cpl() {
+        # TODO: if number use PID (-p), if text use program (-e), if slash use path (-P)
         sudo cpulimit -l $1 -p $2 -z;
     }
 
-    alias_ssh() {
+    ssh() {
         kf="$HOME/.ssh/keys/$1"
         [[ -f "$kf" ]] && eval $(keychain --eval --agents ssh -Q --quiet "$kf")
         # /usr/bin as workaround for: alias_ssh:3: maximum nested function level reached
         /usr/bin/ssh "$1"
     }
 
-    alias_scp() {
+    scp() {
         kf="$HOME/.ssh/keys/$1"
         [[ -f "$kf" ]] && eval $(keychain --eval --agents ssh -Q --quiet "$kf")
         scp "$1"
@@ -60,17 +54,15 @@ setalias() {
     # 2}}}
     # process management {{{2
     alias psg='ps aux | grep'
-    alias cpl='alias_cpl' # cpulimit
     alias kll='kill -KILL'
     alias klla='killall -KILL'
     # 2}}}
     # random stuff {{{2
-    alias rmrecent='alias_rmrecent'
-    alias rmhistory='alias_rmhistory'
     alias cputemp='cat /proc/acpi/thermal_zone/THRM/temperature'
     alias man='man'
     alias bman='man -H/home/gl/Documents/scripts/man.sh'
     alias xgetrules='xprop | grep -ie "^wm_class" -e "^wm_name"'
+    alias xdebug='Xephyr :1 -ac -br -noreset -screen 1152x720 &'
     #alias shutdown='sudo shutdown -h now'
     alias shutdown='commands.sh shutdown'
     alias reboot='sudo reboot'
@@ -78,8 +70,6 @@ setalias() {
     alias youtube-mp3='youtube-dl --title --extract-audio --audio-format mp3'
     alias dmsg='watch -n 1 dmesg -Tx \| tail -n'
     alias cppcheck='cppcheck --enable=all --platform=unix64 --report-progress --std=c++11'
-    alias ssh='alias_ssh'
-    alias scp='alias_scp'
     alias nb='newsbeuter'
     alias top15='print -l ? ${(o)history%% *} | uniq -c | sort -nr | head -n 15'
     #alias screen-add='xrandr --output VGA1 --mode 1280x1024 --right-of LVDS1 && nitrogen --restore'
@@ -92,7 +82,6 @@ setalias() {
     alias l='ls'
     alias v='vim'
     alias t='top -d 3' # refresh every -d seconds
-    alias x='exit'
     # 2}}}
     # cryptsetup {{{2
     alias cryptsetup-mount='~scripts/cryptsetup-mount.sh'
@@ -100,14 +89,8 @@ setalias() {
     alias luksOpen='sudo cryptsetup luksOpen'
     alias luksClose='sudo cryptsetup luksClose'
     # 2}}}
-    # awesome {{{2
-    alias awesomedebug='Xephyr :1 -ac -br -noreset -screen 1152x720 &'
-    alias awesometest='DISPLAY=:1.0 awesome -c ~/.config/awesome/rc.lua'
-    alias naughtydisable='echo "naughty.suspend()" | awesome-client - '
-    alias naughtyenable='echo "naughty.resume()" | awesome-client - '
-    # 2}}}
     # backups {{{2
-    alias_rsnap() {
+    rsnap() {
         if [ ! $1 ]; then
             echo "fail :P"
             exit 1;
@@ -121,10 +104,8 @@ setalias() {
             exit 1;
         fi
     }
-    alias rsnap='alias_rsnap'
     # 2}}}
     # pkg management {{{2
-    #local refreshWidget='echo "vicious.force({ pacwidget, })" | awesome-client -'
     local refreshWidget='killall -USR2 dwmstatus'
     local refreshZshCache='~scripts/zsh-cache.sh'
     alias pacup="sudo pacman -Su && $refreshZshCache ; $refreshWidget"
