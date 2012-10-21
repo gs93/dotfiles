@@ -2,7 +2,7 @@
 # ~/.zprofile
 #
 
-[[ -f ~/.zshrc ]] && . ~/.zshrc
+#[[ -f ~/.zshrc ]] && . ~/.zshrc
 
 if [ "$(tty)" = "/dev/tty1" ]; then
     clear
