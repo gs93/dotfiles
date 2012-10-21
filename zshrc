@@ -78,6 +78,7 @@ setalias() {
     alias l='ls'
     alias v='vim'
     alias t='top -d 3' # refresh every -d seconds
+    alias x='exit'
     # 2}}}
     # cryptsetup {{{2
     alias cryptsetup-mount='~scripts/cryptsetup-mount.sh'
