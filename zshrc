@@ -29,19 +29,6 @@ setalias() {
         # TODO: if number use PID (-p), if text use program (-e), if slash use path (-P)
         sudo cpulimit -l $1 -p $2 -z;
     }
-
-    ssh() {
-        kf="$HOME/.ssh/keys/$1"
-        [[ -f "$kf" ]] && eval $(keychain --eval --agents ssh -Q --quiet "$kf")
-        # /usr/bin as workaround for: alias_ssh:3: maximum nested function level reached
-        /usr/bin/ssh "$1"
-    }
-
-    scp() {
-        kf="$HOME/.ssh/keys/$1"
-        [[ -f "$kf" ]] && eval $(keychain --eval --agents ssh -Q --quiet "$kf")
-        scp "$1"
-    }
     # 2}}}
     # filesystem {{{2
     alias lsg='ls --color=auto | grep -i'
