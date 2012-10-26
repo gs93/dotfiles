@@ -18,9 +18,6 @@ set shiftwidth=4
 " set cryptionmethod (:X)
 set cryptmethod=blowfish
 
-" set text width to 70 chars
-"set textwidth=70
-
 " set , instead of \
 let mapleader = ","
 
@@ -28,9 +25,6 @@ let mapleader = ","
 " set ^s to save
 map <C-s> :w<CR>:mkview<CR>
 imap <C-s> <Esc>:w<CR>:mkview<CR>a
-" make
-"imap <C-m> <Esc>:make<CR>
-"map <C-m> :make<CR>
 
 "" commands
 " write as root
