@@ -9,7 +9,7 @@ BROWSER='firefox'
 setalias() {
     # functions {{{2
     cdd() {
-        cd "${1}" && ls --color=auto ;
+        cd "${1}" && ls ;
     }
 
     rmrecent() {
@@ -117,106 +117,46 @@ setalias() {
 }
 # 1}}}
 
-# general config (colors, promt, ..) {{{
+# general config (promt, history, ..) {{{
 function prompt_char { # http://stevelosh.com/blog/2010/02/my-extravagant-zsh-prompt/#repository-types
     hg status >/dev/null 2>/dev/null && echo '☿' && return
     git status >/dev/null 2>/dev/null && echo '±' && return
     echo '$'
 }
 
-setpromptcolor () {
-    setopt prompt_subst
-    setopt correct
-    
-    ###
-    # See if we can use colors.
- 
-    autoload colors zsh/terminfo
-    if [[ "$terminfo[colors]" -ge 8 ]]; then
-            colors
-    fi
-    for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE; do
-            eval PR_$color='%{$terminfo[bold]$fg[${(L)color}]%}'
-            eval PR_LIGHT_$color='%{$fg[${(L)color}]%}'
-            (( count = $count + 1 ))
-    done
-    PR_NO_COLOUR="%{$terminfo[sgr0]%}"
- 
- 
-    ###
-    # See if we can use extended characters to look nicer.
- 
-    typeset -A altchar
-    set -A altchar ${(s..)terminfo[acsc]}
-    PR_SET_CHARSET="%{$terminfo[enacs]%}"
-    PR_SHIFT_IN="%{$terminfo[smacs]%}"
-    PR_SHIFT_OUT="%{$terminfo[rmacs]%}"
-    PR_HBAR=${altchar[q]:--}
-    PR_ULCORNER=${altchar[l]:--}
-    PR_LLCORNER=${altchar[m]:--}
-    PR_LRCORNER=${altchar[j]:--}
-    PR_URCORNER=${altchar[k]:--}
- 
-    if [[ "$TERM" == "screen" ]]; then
-        PR_HBAR=-
-        PR_ULCORNER=--
-        PR_LLCORNER=--
-    	PR_LRCORNER=--
-    	PR_URCORNER=-
-    fi 
- 
- 
-    ###
-    # Decide if we need to set titlebar text.
- 
-    case $TERM in
-	xterm*)
-	    PR_TITLEBAR=$'%{\e]0;%(!.-=*[ROOT]*=- | .)%n@%m:%~ | ${COLUMNS}x${LINES} | %y\a%}'
-	    ;;
-	screen)
-	    PR_TITLEBAR=$'%{\e_screen \005 (\005t) | %(!.-=[ROOT]=- | .)%n@%m:%~ | ${COLUMNS}x${LINES} | %y\e\\%}'
-	    ;;
-	*)
-	    PR_TITLEBAR=''
-	    ;;
-    esac
- 
- 
-    ###
-    # Decide whether to set a screen title
-    if [[ "$TERM" == "screen" ]]; then
-        PR_STITLE=$'%{\ekzsh\e\\%}'
-    else
-        PR_STITLE=''
-    fi
-
-    autoload colors zsh/terminfo
-    case $TERM in
-	xterm*)
-	    PR_TITLEBAR=$'%{\e]0;%(!.-=*[ROOT]*=- | .)%n@%m:%~ \a%}'
-	    ;;
-	screen)
-	    PR_TITLEBAR=$'%{\e_screen \005 (\005t) | %(!.-=[ROOT]=- | .)%n@%m:%~ \e\\%}'
-	    ;;
-	*)
-	    PR_TITLEBAR=''
-	    ;;
-    esac
-    
-    PS1='abc'
-    export PS1
-    
-    #PROMPT='$PR_STITLE${(e)PR_TITLEBAR}%m:%~%<<$ '
-    PROMPT='$PR_STITLE${(e)PR_TITLEBAR}%m:%~%<<$(prompt_char) '
-    RPROMPT='%D{%H:%M:%S}'
-} # }}}
-
-# promt settings {{{
-setpromtsettings() {
+sethistory() {
+    # history
     HISTSIZE=15000
     SAVEHIST=15000
     HISTFILE=$XDG_CACHE_HOME/zsh/history
-    setopt APPEND_HISTORY
+    setopt append_history
+}
+
+setoptions() {
+    # correct mistyped commands
+    setopt correct
+    
+    # push the old dir onto the dir stack
+    setopt auto_pushd
+}
+
+setpromptsettings() {
+    # parameter expansion, command substitution and arithmetic expansion
+    setopt prompt_subst
+
+    # set screen title
+    PR_STITLE=$'%{\ekzsh\e\\%}'
+
+    # set titlebar text
+    PR_TITLEBAR=$'%{\e_screen \005 (\005t) | %(!.-=[ROOT]=- | .)%n@%m:%~ \e\\%}'
+    
+    # ???
+    PS1='abc'
+    export PS1
+    
+    # set prompt
+    PROMPT='$PR_STITLE${(e)PR_TITLEBAR}%m:%~%<<$(prompt_char) '
+    RPROMPT='%D{%H:%M:%S}'
 } # }}}
 
 # keybindings {{{
@@ -324,16 +264,12 @@ export CCACHE_DIR="$XDG_CACHE_HOME/ccache"
 # stty (else ^S freeze terminal until ^Q)
 stty start undef
 stty stop undef
-
-# options
-setopt correct
-setopt auto_pushd
 # }}}
 
 # execute functions {{{
 setcomplete
-setpromptcolor
-setpromtsettings
+sethistory
+setpromptsettings
 setkeybindings
 setalias
 # }}}
