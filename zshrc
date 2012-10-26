@@ -117,30 +117,34 @@ setalias() {
 }
 # 1}}}
 
-# general config (promt, history, ..) {{{
+# general config (promt, history, complete, ..) {{{
+sethistory() { # {{{2
+    HISTSIZE=15000
+    SAVEHIST=15000
+    HISTFILE=$XDG_CACHE_HOME/zsh/history
+    setopt append_history
+} # 2}}}
+
+setcomplete() { # {{{2
+    # see man zshcompctl
+    autoload -U compinit
+    compinit
+
+    setopt completealiases
+
+    for i in $XDG_CACHE_HOME/zsh/complete/*; do
+        compctl -k "(`cat $i`)" $(basename "$i")
+    done
+} # 2}}}
+
+# setpromt {{{2
 function prompt_char { # http://stevelosh.com/blog/2010/02/my-extravagant-zsh-prompt/#repository-types
     hg status >/dev/null 2>/dev/null && echo '☿' && return
     git status >/dev/null 2>/dev/null && echo '±' && return
     echo '$'
 }
 
-sethistory() {
-    # history
-    HISTSIZE=15000
-    SAVEHIST=15000
-    HISTFILE=$XDG_CACHE_HOME/zsh/history
-    setopt append_history
-}
-
-setoptions() {
-    # correct mistyped commands
-    setopt correct
-    
-    # push the old dir onto the dir stack
-    setopt auto_pushd
-}
-
-setpromptsettings() {
+setprompt() {
     # parameter expansion, command substitution and arithmetic expansion
     setopt prompt_subst
 
@@ -157,7 +161,27 @@ setpromptsettings() {
     # set prompt
     PROMPT='$PR_STITLE${(e)PR_TITLEBAR}%m:%~%<<$(prompt_char) '
     RPROMPT='%D{%H:%M:%S}'
-} # }}}
+} # 2}}}
+
+setoptions() {
+    # correct mistyped commands
+    setopt correct
+    
+    # push the old dir onto the dir stack
+    setopt auto_pushd
+
+    # rationalise-dot
+    rationalise-dot() {
+        if [[ $LBUFFER = *.. ]]; then
+            LBUFFER+=/..
+        else
+            LBUFFER+=.
+        fi
+    }
+    zle -N rationalise-dot
+    bindkey . rationalise-dot
+}
+# }}}
 
 # keybindings {{{
 setkeybindings() {
@@ -224,30 +248,6 @@ preexec() {
 }
 # }}}
 
-# autocomplete {{{
-setcomplete() { #  see man zshcompctl
-    autoload -U compinit
-    compinit
-
-    setopt completealiases
-
-    for i in $XDG_CACHE_HOME/zsh/complete/*; do
-        compctl -k "(`cat $i`)" $(basename "$i")
-    done
-} # }}}
-
-# rationalise-dot {{{
-rationalise-dot() {
-    if [[ $LBUFFER = *.. ]]; then
-        LBUFFER+=/..
-    else
-        LBUFFER+=.
-    fi
-}
-zle -N rationalise-dot
-bindkey . rationalise-dot
-# }}}
-
 # some other stuff {{{
 if [ "$TERM" != "dumb" ]; then
     eval "`dircolors -b`"
@@ -269,7 +269,7 @@ stty stop undef
 # execute functions {{{
 setcomplete
 sethistory
-setpromptsettings
+setprompt
 setkeybindings
 setalias
 # }}}
