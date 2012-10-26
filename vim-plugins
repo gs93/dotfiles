@@ -1,10 +1,9 @@
-# pacman -Qs vim- | grep local | grep -v ranger | cut -c7- | awk '{print $1}'
+# pacman -Qs vim- | grep local | grep -vE "(ranger|vim-runtime)" | cut -c7- | awk '{print $1}'
 vim-a
 vim-clang-complete-git
 vim-doxygentoolkit
 vim-minibufexpl
 vim-nerdtree
-vim-runtime
 vim-snipmate
 vim-supertab
 vim-surround
