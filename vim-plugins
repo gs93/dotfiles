@@ -1,11 +1,12 @@
-vim-a 2.18-6 (vim-plugins)
-vim-clang-complete-git 20120329-1
-vim-doxygentoolkit 0.2.13-2 (vim-plugins)
-vim-minibufexpl 6.4.2-2 (vim-plugins)
-vim-nerdtree 4.2.0-3 (vim-plugins)
-vim-runtime 7.3.712-1
-vim-snipmate 0.83-1 (vim-plugins)
-vim-supertab 2.0-1
-vim-surround 1.90-2
-vim-taglist 45-5 (vim-plugins)
-vim-tasklist 1.0.1-7 (vim-plugins)
+# pacman -Qs vim- | grep local | grep -v ranger | cut -c7- | awk '{print $1}'
+vim-a
+vim-clang-complete-git
+vim-doxygentoolkit
+vim-minibufexpl
+vim-nerdtree
+vim-runtime
+vim-snipmate
+vim-supertab
+vim-surround
+vim-taglist
+vim-tasklist
