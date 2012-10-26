@@ -263,6 +263,10 @@ setkeybindings() {
     # for freebsd console
     bindkey "\e[H" beginning-of-line
     bindkey "\e[F" end-of-line
+
+    # search
+    bindkey '^[[5~' history-beginning-search-backward
+    bindkey '^[[6~' history-beginning-search-forward
 } # }}}
 
 # windowtitle {{{
