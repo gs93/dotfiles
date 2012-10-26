@@ -3,13 +3,6 @@
 # vars {{{
 EDITOR='vim'
 BROWSER='firefox'
-
-GIT_PROMPT_UNTRACKED='untracked '
-GIT_PROMPT_ADDED='added '
-GIT_PROMPT_MODIFIED='modified '
-GIT_PROMPT_RENAMED='renamed '
-GIT_PROMPT_DELETED='deleted '
-GIT_PROMPT_UNMERGED='unmerged '
 # }}}
 
 # alias {{{1
@@ -45,17 +38,14 @@ setalias() {
     alias klla='killall -KILL'
     # 2}}}
     # random stuff {{{2
-    alias cputemp='cat /proc/acpi/thermal_zone/THRM/temperature'
     alias xgetrules='xprop | grep -ie "^wm_class" -e "^wm_name"'
     alias xdebug='Xephyr :1 -ac -br -noreset -screen 1152x720 &'
     alias shutdown='commands.sh shutdown'
-    alias reboot='sudo reboot'
     alias whenn='when y | head -7 | tail -5'
     alias youtube-mp3='youtube-dl --title --extract-audio --audio-format mp3'
     alias dmsg='watch -n 1 dmesg -Tx \| tail -n'
     alias cppcheck='cppcheck --enable=all --platform=unix64 --report-progress --std=c++11'
     alias nb='newsbeuter'
-    alias top15='print -l ? ${(o)history%% *} | uniq -c | sort -nr | head -n 15'
     alias screen-add='$HOME/.screenlayout/home.sh && sleep 3s && nitrogen --restore'
     alias screen-remove='xrandr --output VGA2 --off'
     alias zshsource="source $HOME/.zshrc"
@@ -94,7 +84,7 @@ setalias() {
     local refreshZshCache='~scripts/zsh-cache.sh'
     alias pacup="sudo pacman -Su && $refreshZshCache ; $refreshWidget"
     alias pacdl='sudo pacman -Suw --noconfirm'
-    alias pacref="( ~scripts/sah.pl & ) ; sudo pacman -Sy ; cat $HOME/.cache/sah ; $refreshWidget"
+    alias pacref="( ~scripts/sah.pl & ) ; sudo pacman -Sy ; $refreshWidget"
     alias pacin='sudo pacman -S'
     alias pacrm='sudo pacman -Rns'
     alias pacrem='sudo pacman -R' # keep deps
@@ -116,13 +106,6 @@ setalias() {
     alias -g L='| less'
     alias -g T='| tail -n'
     alias -g H='| head -n'
-    # 2}}}
-    # suffix {{{2
-    alias -s txt=$EDITOR
-    #alias -s php=$EDITOR
-    alias -s cpp=$EDITOR
-    alias -s hpp=$EDITOR
-    alias -s conf=$EDITOR
     # 2}}}
     # hashes {{{2
     hash -d projects=$HOME/documents/projects
