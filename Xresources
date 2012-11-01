@@ -36,17 +36,12 @@ URxvt.scrollBar             : false
 URxvt.fade                  : 0
 URxvt.cursorBlink           : true
 URxvt.tripleclickwords      : true
-!URxvt.geometry              : 160x35
 URxvt.geometry              : 165x36
 URxvt.internalBorder        : 0
 URxvt.saveLines             : 10000
 URxvt.iso14755_52           : false
 URxvt.iso14755              : false
-!URxvt.font                  : xft:Bitstream Vera Sans Mono:pixelsize=13
-!URxvt.font                  : xft:Terminus:pixelsize=15
 URxvt.font                  : -*-terminus-medium-r-*-*-14-*-*-*-*-*-*-*
-!URxvt.boldFont              : xft:Terminus:pixelsize=15
-!URxvt.iconFile              : /usr/share/icons/gnome/32x32/apps/utilities-terminal.png
 URxvt.urgentOnBell          : true
 ! }}}
 !! plugins, see manpage urxvtperl {{{
