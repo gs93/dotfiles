@@ -212,8 +212,8 @@ setkeybindings() {
     bindkey "\e[F" end-of-line
 
     # search
-    bindkey '^[[5~' history-beginning-search-backward
-    bindkey '^[[6~' history-beginning-search-forward
+    bindkey '^[[A' history-beginning-search-backward
+    bindkey '^[[B' history-beginning-search-forward
 } # }}}
 
 # windowtitle {{{
@@ -270,6 +270,7 @@ stty stop undef
 setcomplete
 sethistory
 setprompt
+setoptions
 setkeybindings
 setalias
 # }}}
