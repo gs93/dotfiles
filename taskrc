@@ -11,7 +11,7 @@
 # Use the command 'task show' to see all defaults and overrides
 
 # Files
-data.location=/home/gl/.config/task
+data.location=~/.config/task
 
 report.list.columns= id,project,priority,due,due.countdown,start.active,urgency,depends,description,tags
 report.list.labels=  ID,Project,P,Due,Countdown,A,Urgency,Deps, Description,Tags
