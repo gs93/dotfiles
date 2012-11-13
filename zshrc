@@ -131,10 +131,12 @@ setcomplete() { # {{{2
     compinit
 
     setopt completealiases
-
-    for i in $XDG_CACHE_HOME/zsh/complete/*; do
-        compctl -k "(`cat $i`)" $(basename "$i")
-    done
+    
+    if [ -d "$XDG_CACHE_HOME/zsh/complete" ]; then
+        for i in $XDG_CACHE_HOME/zsh/complete/*; do
+            compctl -k "(`cat $i`)" $(basename "$i")
+        done
+    fi
 } # 2}}}
 
 # setpromt {{{2
