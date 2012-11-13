@@ -94,10 +94,6 @@ setalias() {
     alias pacloc='pacman -Qi'
     alias pacreps='pacsearch' #'pacman -Ss'
     alias pacrep='pacman -Si'
-    alias aurreps='yaourt -Ss'
-    alias aurrep='yaourt -Si'
-    alias aurinst='yaourt -S'
-    alias aurupg='yaourt -Sau'
     alias pacopt='paccache -vr && sudo pacman-optimize; du -hs /var/cache/pacman/ /var/abs/'
     alias pacunused="pacman -Qdtq | sudo pacman -Rs -"
     # 2}}}
