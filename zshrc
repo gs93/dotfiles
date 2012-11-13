@@ -257,7 +257,7 @@ if [ "$TERM" != "dumb" ]; then
 fi
 
 # autostart tmux
-[[ $TERM != "screen" ]] && tmux attach && exit
+[[ -z "$TMUX" ]] && tmux attach && exit
 
 # ccache
 export PATH="/usr/lib/ccache/bin/:$PATH"
