@@ -162,7 +162,7 @@ setprompt() {
     
     # set prompt
     PROMPT='$(prompt_return)$PR_STITLE${(e)PR_TITLEBAR}%m:%~%<<$(prompt_char)%{$reset_color%} '
-    RPROMPT='%D{%H:%M:%S}'
+    RPROMPT='%? %*'
 } # 2}}}
 
 setoptions() {
