@@ -142,6 +142,10 @@ function prompt_char { # http://stevelosh.com/blog/2010/02/my-extravagant-zsh-pr
     echo '$'
 }
 
+function prompt_return { # make prompt red if return != 0
+    [[ $? -ne 0 ]] && echo "%{$fg[red]%}"
+}
+
 setprompt() {
     # parameter expansion, command substitution and arithmetic expansion
     setopt prompt_subst
@@ -157,7 +161,7 @@ setprompt() {
     export PS1
     
     # set prompt
-    PROMPT='$PR_STITLE${(e)PR_TITLEBAR}%m:%~%<<$(prompt_char) '
+    PROMPT='$(prompt_return)$PR_STITLE${(e)PR_TITLEBAR}%m:%~%<<$(prompt_char)%{$reset_color%} '
     RPROMPT='%D{%H:%M:%S}'
 } # 2}}}
 
@@ -167,6 +171,9 @@ setoptions() {
     
     # push the old dir onto the dir stack
     setopt auto_pushd
+
+    # load colors
+    autoload -U colors && colors
 
     # rationalise-dot
     rationalise-dot() {
