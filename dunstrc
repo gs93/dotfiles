@@ -160,6 +160,10 @@
     appname = claws-mail
     urgency = low
 
+[nwmanager]
+    appname = NetworkManager
+    urgency = normal
+
 #[says]
 #    appname = Pidgin
 #    summary = *says*
