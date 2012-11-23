@@ -257,6 +257,7 @@ preexec() {
 if [ "$TERM" != "dumb" ]; then
     eval "`dircolors -b`"
     alias ls='ls -hF --color=auto'
+    alias grep='grep --color'
 fi
 
 # autostart tmux
