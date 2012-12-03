@@ -258,6 +258,7 @@ if [ "$TERM" != "dumb" ]; then
     eval "`dircolors -b`"
     alias ls='ls -hF --color=auto'
     alias grep='grep --color'
+    alias rsync='rsync -h'
 fi
 
 # autostart tmux
