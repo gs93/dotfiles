@@ -26,8 +26,7 @@ setalias() {
     # filesystem {{{2
     alias lsg='ls --color=auto | grep -i'
     alias -- -al='ls -al'
-    alias cd.='cd ..'
-    alias ..='cd ..'
+    alias -- -='cd -'
     alias cpr='rsync -av --progress'
     alias ndu='ncdu -r'
     alias smart='sudo smartctl -H'
@@ -168,9 +167,13 @@ setprompt() {
 setoptions() {
     # correct mistyped commands
     setopt correct
+
+    # auto cd when command doesn't exist and is a directory name
+    setopt autocd
     
-    # push the old dir onto the dir stack
+    # push the old dir onto the dir stack and ignore duplicates
     setopt auto_pushd
+    setopt pushd_ignore_dups
 
     # load colors
     autoload -U colors && colors
