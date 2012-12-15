@@ -1,10 +1,3 @@
-# TODO: needs cleanup
-
-# vars {{{
-EDITOR='vim'
-BROWSER='firefox'
-# }}}
-
 # alias {{{1
 setalias() {
     # functions {{{2
