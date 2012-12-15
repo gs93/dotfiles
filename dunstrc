@@ -149,7 +149,7 @@
 [signed_on]
     appname = Pidgin
     summary = "*signed on*"
-   urgency = low
+    urgency = low
 
 [signed_off]
     appname = Pidgin
