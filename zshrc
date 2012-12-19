@@ -181,6 +181,11 @@ setoptions() {
     }
     zle -N rationalise-dot
     bindkey . rationalise-dot
+
+    # source pkgfiles command-not-found handler
+    if [[ -s "/usr/share/doc/pkgfile/command-not-found.zsh" ]]; then
+        source "/usr/share/doc/pkgfile/command-not-found.zsh"
+    fi
 }
 # }}}
 
