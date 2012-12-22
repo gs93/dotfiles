@@ -110,7 +110,6 @@ sethistory() { # {{{2
     HISTSIZE=15000
     SAVEHIST=15000
     HISTFILE=$XDG_CACHE_HOME/zsh/history
-    setopt append_history
 } # 2}}}
 
 setcomplete() { # {{{2
@@ -167,6 +166,10 @@ setoptions() {
     # push the old dir onto the dir stack and ignore duplicates
     setopt auto_pushd
     setopt pushd_ignore_dups
+
+    # append history and ignore duplicates
+    setopt append_history
+    setopt hist_ignore_all_dups
 
     # load colors
     autoload -U colors && colors
