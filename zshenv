@@ -1,2 +1,2 @@
 export EDITOR='vim'
-export BROWSER='firefox'
+export BROWSER='dwb'
