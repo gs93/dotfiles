@@ -47,7 +47,7 @@ URxvt.urgentOnBell          : true
 !! plugins, see manpage urxvtperl {{{
 URxvt.perl-ext-common       : default,clipboard,url-select,-option-popup,-readline,-selection-popup
 ! url-select
-URxvt.urlLauncher           : firefox
+URxvt.urlLauncher           : dwb
 URxvt.urlButton             : 3
 URxvt.underlineURLs         : false
 URxvt.keysym.Control-Shift-U: perl:url-select:select_next
