@@ -44,6 +44,7 @@ setalias() {
     # 2}}}
     # short {{{2
     alias s='sudo'
+    compdef s='sudo'
     alias l='ls'
     alias v='vim'
     alias t='top -d 3' # refresh every -d seconds
