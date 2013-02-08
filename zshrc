@@ -95,6 +95,11 @@ setalias() {
     alias -g L='| less'
     alias -g T='| tail -n'
     alias -g H='| head -n'
+    alias -g W='| wc'
+    alias -g LL='2>&1 | less'
+    alias -g CA='2>&1 | cat -A'
+    alias -g NO='2>/dev/null'
+    alias -g NE='2>/dev/null'
     # 2}}}
     # hashes {{{2
     hash -d projects=$HOME/documents/projects
