@@ -25,7 +25,7 @@ setalias() {
     alias smart='sudo smartctl -H'
     # 2}}}
     # process management {{{2
-    alias psg='ps aux | grep'
+    alias psg='pgrep -a'
     alias kll='kill -KILL'
     alias klla='killall -KILL'
     # 2}}}
