@@ -272,6 +272,11 @@ fi
 # autostart tmux
 [[ -z "$TMUX" ]] && tmux attach && exit
 
+# tetris \o/
+autoload -U tetris
+zle -N tetris
+bindkey ^T tetris
+
 # ccache
 export PATH="/usr/lib/ccache/bin/:$PATH"
 export CCACHE_DIR="$XDG_CACHE_HOME/ccache"
