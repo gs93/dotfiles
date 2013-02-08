@@ -104,8 +104,6 @@ setalias() {
     # hashes {{{2
     hash -d projects=$HOME/documents/projects
     hash -d scripts=$HOME/documents/scripts
-    hash -d data=/media/data
-    hash -d data2=/media/data2
     hash -d study=$HOME/documents/box/study
     # 2}}}
 }
