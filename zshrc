@@ -77,22 +77,27 @@ setalias() {
     }
     # 2}}}
     # pkg management {{{2
-    local refreshWidget='killall -USR2 dwmstatus'
-    local refreshZshCache='~scripts/zsh-cache.sh'
-    alias pacup="sudo pacman -Su && $refreshZshCache ; $refreshWidget"
-    alias pacdl='sudo pacman -Suw --noconfirm'
-    alias pacref="( ~scripts/sah.pl & ) ; sudo pacman -Sy ; $refreshWidget"
-    alias pacin='sudo pacman -S'
-    alias pacrm='sudo pacman -Rns'
-    alias pacrem='sudo pacman -R' # keep deps
-    alias pacown='pacman -Qo'
-    alias paclist='pacman -Ql'
-    alias paclocs='pacman -Qs'
-    alias pacloc='pacman -Qi'
-    alias pacreps='pacsearch' #'pacman -Ss'
-    alias pacrep='pacman -Si'
-    alias pacopt='paccache -vr && sudo pacman-optimize; du -hs /var/cache/pacman/ /var/abs/'
-    alias pacunused="pacman -Qdtq | sudo pacman -Rs -"
+    if [ ! -r /etc/debian_version ]; then # it's arch
+        local refreshWidget='killall -USR2 dwmstatus'
+        local refreshZshCache='~scripts/zsh-cache.sh'
+        alias pacup="sudo pacman -Su && $refreshZshCache ; $refreshWidget"
+        alias pacdl='sudo pacman -Suw --noconfirm'
+        alias pacref="( ~scripts/sah.pl & ) ; sudo pacman -Sy ; $refreshWidget"
+        alias pacin='sudo pacman -S'
+        alias pacrm='sudo pacman -Rns'
+        alias pacrem='sudo pacman -R' # keep deps
+        alias pacown='pacman -Qo'
+        alias paclist='pacman -Ql'
+        alias paclocs='pacman -Qs'
+        alias pacloc='pacman -Qi'
+        alias pacreps='pacsearch' #'pacman -Ss'
+        alias pacrep='pacman -Si'
+        alias pacopt='paccache -vr && sudo pacman-optimize; du -hs /var/cache/pacman/ /var/abs/'
+        alias pacunused="pacman -Qdtq | sudo pacman -Rs -"
+    else
+        alias apt-update="apt-get update"
+        alias apt-upgrade="apt-get upgrade"
+    fi
     # 2}}}
     # global {{{2
     alias -g G='| grep'
