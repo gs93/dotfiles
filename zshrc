@@ -20,6 +20,11 @@ setalias() {
         sudo cpulimit -l $1 -p $2 -z;
     }
     # 2}}}
+    # hashes {{{2
+    hash -d projects=$HOME/documents/projects
+    hash -d scripts=$HOME/documents/scripts
+    hash -d study=$HOME/documents/box/study
+    # 2}}}
     # filesystem {{{2
     alias lsg='ls --color=auto | grep -i'
     alias -- -al='ls -al'
@@ -78,11 +83,12 @@ setalias() {
     # 2}}}
     # pkg management {{{2
     if [ ! -r /etc/debian_version ]; then # it's arch
-        local refreshWidget='killall -USR2 dwmstatus'
+        local refreshWidget='killall -USR2 dwmstatus 2>/dev/null'
         local refreshZshCache='~scripts/zsh-cache.sh'
+        local aurUpdate='~scripts/sah.pl'
         alias pacup="sudo pacman -Su && $refreshZshCache ; $refreshWidget"
         alias pacdl='sudo pacman -Suw --noconfirm'
-        alias pacref="( ~scripts/sah.pl & ) ; sudo pacman -Sy ; $refreshWidget"
+        alias pacref="( $aurUpdate & ); sudo pacman -Sy ; $refreshWidget"
         alias pacin='sudo pacman -S'
         alias pacrm='sudo pacman -Rns'
         alias pacrem='sudo pacman -R' # keep deps
@@ -109,11 +115,6 @@ setalias() {
     alias -g CA='2>&1 | cat -A'
     alias -g NO='2>/dev/null'
     alias -g NE='2>/dev/null'
-    # 2}}}
-    # hashes {{{2
-    hash -d projects=$HOME/documents/projects
-    hash -d scripts=$HOME/documents/scripts
-    hash -d study=$HOME/documents/box/study
     # 2}}}
 }
 # 1}}}
