@@ -1,3 +1,7 @@
+# local vars
+local configDir=${XDG_CONFIG_HOME:-~/.config}
+local cacheDir=${XDG_CACHE_HOME:-~/.cache}
+
 # alias {{{1
 setalias() {
     # functions {{{2
@@ -113,7 +117,7 @@ setalias() {
 sethistory() { # {{{2
     HISTSIZE=15000
     SAVEHIST=15000
-    HISTFILE=$XDG_CACHE_HOME/zsh/history
+    HISTFILE=$cacheDir/zsh/history
 } # 2}}}
 
 setcomplete() { # {{{2
@@ -123,8 +127,8 @@ setcomplete() { # {{{2
 
     setopt completealiases
     
-    if [ -d "$XDG_CACHE_HOME/zsh/complete" ]; then
-        for i in $XDG_CACHE_HOME/zsh/complete/*; do
+    if [ -d "$cacheDir/zsh/complete" ]; then
+        for i in $cacheDir/zsh/complete/*; do
             compctl -k "(`cat $i`)" $(basename "$i")
         done
     fi
@@ -277,9 +281,11 @@ autoload -U tetris
 zle -N tetris
 bindkey ^T tetris
 
+# vi keys - show mode: http://zshwiki.org/home/examples/zlewidgets
+
 # ccache
 export PATH="/usr/lib/ccache/bin/:$PATH"
-export CCACHE_DIR="$XDG_CACHE_HOME/ccache"
+export CCACHE_DIR="$cacheDir/ccache"
 
 # stty (else ^S freeze terminal until ^Q)
 stty start undef
