@@ -115,6 +115,7 @@ setalias() {
     alias -g CA='2>&1 | cat -A'
     alias -g NO='2>/dev/null'
     alias -g NE='2>/dev/null'
+    alias -g SP=' |& curl -F sprunge=@- sprunge.us'
     # 2}}}
 }
 # 1}}}
