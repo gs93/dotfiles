@@ -125,6 +125,7 @@ sethistory() { # {{{2
     HISTSIZE=15000
     SAVEHIST=15000
     HISTFILE=$cacheDir/zsh/history
+    [[ ! -d $(dirname "$HISTFILE") ]] && mkdir $(dirname "$HISTFILE")
 } # 2}}}
 
 setcomplete() { # {{{2
