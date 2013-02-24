@@ -84,14 +84,6 @@ alias luksOpen='sudo cryptsetup luksOpen'
 alias luksClose='sudo cryptsetup luksClose'
 # 2}}}
 
-# packagemanagement {{{2
-local refreshWidget='killall -USR2 dwmstatus 2>/dev/null'
-local refreshZshCache='~scripts/zsh-cache.sh'
-local aurUpdate='~scripts/sah.pl'
-alias pacup="sudo pacman -Su && $refreshZshCache ; $refreshWidget"
-alias pacref="( $aurUpdate & ); sudo pacman -Sy ; $refreshWidget"
-# 2}}}
-
 # global {{{2
 alias -g A='; echo -e "\a"'
 alias -g G='| grep'
