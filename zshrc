@@ -27,7 +27,7 @@ setalias() {
     # 2}}}
     # filesystem {{{2
     alias lsg='ls --color=auto | grep -i'
-    alias -- -al='ls -al'
+    alias la='ls -al'
     alias -- -='cd -'
     alias cpr='rsync -av --progress'
     alias ndu='ncdu -r'
