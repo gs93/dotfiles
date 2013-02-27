@@ -1,5 +1,4 @@
 # local vars
-local configDir=${XDG_CONFIG_HOME:-~/.config}
 local cacheDir=${XDG_CACHE_HOME:-~/.cache}
 
 # alias {{{1
