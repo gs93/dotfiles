@@ -1,5 +1,6 @@
 source ${XDG_CONFIG_HOME:-~/.config}/zsh/init.zsh
 loadPlugin tmux-autostart
+loadPlugin packagemanagement
 loadPlugin windowtitle
 loadPlugin command-not-found
 loadPlugin prompt-git
