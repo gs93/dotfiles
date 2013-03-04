@@ -1,310 +1,98 @@
-# local vars
-local cacheDir=${XDG_CACHE_HOME:-~/.cache}
+source ${XDG_CONFIG_HOME:-~/.config}/zsh/init.zsh
+loadPlugin tmux-autostart
+loadPlugin windowtitle
+loadPlugin command-not-found
+loadPlugin prompt-git
+loadPlugin prompt-char
+loadPlugin prompt-return
+loadPlugin tetris
 
 # alias {{{1
-setalias() {
-    # functions {{{2
-    cdd() {
-        cd "${1}" && ls ;
-    }
-
-    rmrecent() {
-        shred -un 3 $HOME/.local/share/recently-used.xbel ;
-        touch ~/.local/share/recently-used.xbel ;
-        echo "Filehistory delted." ;
-    }
-
-    cpl() {
-        # TODO: if number use PID (-p), if text use program (-e), if slash use path (-P)
-        sudo cpulimit -l $1 -p $2 -z;
-    }
-    # 2}}}
-    # hashes {{{2
-    hash -d projects=$HOME/documents/projects
-    hash -d scripts=$HOME/documents/scripts
-    hash -d study=$HOME/documents/box/study
-    # 2}}}
-    # filesystem {{{2
-    alias lsg='ls --color=auto | grep -i'
-    alias la='ls -al'
-    alias -- -='cd -'
-    alias cpr='rsync -av --progress'
-    alias ndu='ncdu -r'
-    alias smart='sudo smartctl -H'
-    # 2}}}
-    # process management {{{2
-    alias psg='pgrep -a'
-    alias kll='kill -KILL'
-    alias klla='killall -KILL'
-    # 2}}}
-    # random stuff {{{2
-    alias xgetrules='xprop | grep -ie "^wm_class" -e "^wm_name"'
-    alias xdebug='Xephyr :1 -ac -br -noreset -screen 1152x720 &'
-    alias shutdown='commands.sh shutdown'
-    alias whenn='when y | head -7 | tail -5'
-    alias youtube-mp3='youtube-dl --title --extract-audio --audio-format mp3'
-    alias dmsg='watch -n 1 dmesg -Tx \| tail -n'
-    alias cppcheck='cppcheck --enable=all --platform=unix64 --report-progress --std=c++11'
-    alias nb='newsbeuter'
-    alias screen-add='$HOME/.screenlayout/home.sh && sleep 3s && nitrogen --restore'
-    alias screen-remove='xrandr --output VGA2 --off'
-    alias zshsource="source $HOME/.zshrc"
-    # 2}}}
-    # short {{{2
-    alias s='sudo'
-    compdef s='sudo'
-    alias l='ls'
-    alias v='vim'
-    alias t='top -d 3' # refresh every -d seconds
-    alias x='exit'
-    # 2}}}
-    # cryptsetup {{{2
-    alias cryptsetup-mount='~scripts/cryptsetup-mount.sh'
-    alias cryptsetup-umount='~scripts/cryptsetup-umount.sh'
-    alias luksOpen='sudo cryptsetup luksOpen'
-    alias luksClose='sudo cryptsetup luksClose'
-    # 2}}}
-    # backups {{{2
-    rsnap() {
-        if [ ! $1 ]; then
-            echo "fail :P"
-            exit 1;
-        fi
-        date
-        (sudo rsnapshot sync && sudo rsnapshot $1)
-        if [ $? -eq 0 ]; then
-            echo "Sucess!"
-        else
-            echo "Fail!"
-            exit 1;
-        fi
-    }
-    # 2}}}
-    # pkg management {{{2
-    if [ ! -r /etc/debian_version ]; then # it's arch
-        local refreshWidget='killall -USR2 dwmstatus 2>/dev/null'
-        local refreshZshCache='~scripts/zsh-cache.sh'
-        local aurUpdate='~scripts/sah.pl'
-        alias pacup="sudo pacman -Su && $refreshZshCache ; $refreshWidget"
-        alias pacdl='sudo pacman -Suw --noconfirm'
-        alias pacref="( $aurUpdate & ); sudo pacman -Sy ; $refreshWidget"
-        alias pacin='sudo pacman -S'
-        alias pacrm='sudo pacman -Rns'
-        alias pacrem='sudo pacman -R' # keep deps
-        alias pacown='pacman -Qo'
-        alias paclist='pacman -Ql'
-        alias paclocs='pacman -Qs'
-        alias pacloc='pacman -Qi'
-        alias pacreps='pacsearch' #'pacman -Ss'
-        alias pacrep='pacman -Si'
-        alias pacopt='paccache -vr && sudo pacman-optimize; du -hs /var/cache/pacman/ /var/abs/'
-        alias pacunused="pacman -Qdtq | sudo pacman -Rs -"
-    else
-        alias apt-update="apt-get update"
-        alias apt-upgrade="apt-get upgrade"
-    fi
-    # 2}}}
-    # global {{{2
-    alias -g G='| grep'
-    alias -g L='| less'
-    alias -g T='| tail -n'
-    alias -g H='| head -n'
-    alias -g W='| wc'
-    alias -g LL='2>&1 | less'
-    alias -g CA='2>&1 | cat -A'
-    alias -g NO='2>/dev/null'
-    alias -g NE='2>/dev/null'
-    alias -g SP=' |& curl -F sprunge=@- sprunge.us'
-    # 2}}}
+# functions {{{2
+cdd() {
+    cd "${1}" && ls ;
 }
+
+rmrecent() {
+    shred -un 3 $HOME/.local/share/recently-used.xbel
+    truncate --size=0 $HOME/.local/share/recently-used.xbel
+}
+
+cpl() {
+    # TODO: if number use PID (-p), if text use program (-e), if slash use path (-P)
+    sudo cpulimit -l $1 -p $2 -z;
+}
+# 2}}}
+
+# hashes {{{2
+hash -d projects=$HOME/documents/projects
+hash -d scripts=$HOME/documents/scripts
+hash -d study=$HOME/documents/box/study
+# 2}}}
+
+# filesystem {{{2
+alias lsg='ls --color=auto | grep -i'
+alias la='ls -al'
+alias -- -='cd -'
+alias cpr='rsync -av --progress'
+alias ndu='ncdu -r'
+alias smart='sudo smartctl -H'
+# 2}}}
+
+# process management {{{2
+alias psg='pgrep -a'
+alias kll='kill -KILL'
+alias klla='killall -KILL'
+# 2}}}
+
+# random stuff {{{2
+alias xgetrules='xprop | grep -ie "^wm_class" -e "^wm_name"'
+alias xdebug='Xephyr :1 -ac -br -noreset -screen 1152x720 &'
+alias shutdown='commands.sh shutdown'
+alias whenn='when w --noheader'
+alias youtube-mp3='youtube-dl --title --extract-audio --audio-format mp3'
+alias dmsg='watch -n 1 dmesg -Tx \| tail -n'
+alias cppcheck='cppcheck --enable=all --platform=unix64 --report-progress --std=c++11'
+alias screen-add='$HOME/.screenlayout/home.sh && sleep 3s && nitrogen --restore'
+alias screen-remove='xrandr --output VGA2 --off'
+alias zshsource="source $HOME/.zshrc"
+# 2}}}
+
+# short {{{2
+alias s='sudo'
+compdef s='sudo'
+alias l='ls'
+alias v='vim'
+alias t='top -d 3' # refresh every -d seconds
+alias x='exit'
+# 2}}}
+
+# cryptsetup {{{2
+alias cryptsetup-mount='~scripts/cryptsetup-mount.sh'
+alias cryptsetup-umount='~scripts/cryptsetup-umount.sh'
+alias luksOpen='sudo cryptsetup luksOpen'
+alias luksClose='sudo cryptsetup luksClose'
+# 2}}}
+
+# packagemanagement {{{2
+local refreshWidget='killall -USR2 dwmstatus 2>/dev/null'
+local refreshZshCache='~scripts/zsh-cache.sh'
+local aurUpdate='~scripts/sah.pl'
+alias pacup="sudo pacman -Su && $refreshZshCache ; $refreshWidget"
+alias pacref="( $aurUpdate & ); sudo pacman -Sy ; $refreshWidget"
+# 2}}}
+
+# global {{{2
+alias -g G='| grep'
+alias -g L='| less'
+alias -g T='| tail -n'
+alias -g H='| head -n'
+alias -g W='| wc'
+alias -g LL='2>&1 | less'
+alias -g CA='2>&1 | cat -A'
+alias -g NO='2>/dev/null'
+alias -g NE='2>/dev/null'
+alias -g SP=' |& curl -F sprunge=@- sprunge.us'
+# 2}}}
 # 1}}}
-
-# general config (promt, history, complete, ..) {{{
-sethistory() { # {{{2
-    HISTSIZE=15000
-    SAVEHIST=15000
-    HISTFILE=$cacheDir/zsh/history
-    [[ ! -d $(dirname "$HISTFILE") ]] && mkdir $(dirname "$HISTFILE")
-} # 2}}}
-
-setcomplete() { # {{{2
-    # see man zshcompctl
-    autoload -U compinit
-    compinit
-
-    setopt completealiases
-    
-    if [ -d "$cacheDir/zsh/complete" ]; then
-        for i in $cacheDir/zsh/complete/*; do
-            compctl -k "(`cat $i`)" $(basename "$i")
-        done
-    fi
-} # 2}}}
-
-# setpromt {{{2
-function prompt_char { # http://stevelosh.com/blog/2010/02/my-extravagant-zsh-prompt/#repository-types
-    hg status >/dev/null 2>/dev/null && echo '☿' && return
-    git status >/dev/null 2>/dev/null && echo '±' && return
-    echo '$'
-}
-
-function prompt_return { # make prompt red if return != 0
-    [[ $? -ne 0 ]] && echo "%{$fg[red]%}"
-}
-
-setprompt() {
-    # parameter expansion, command substitution and arithmetic expansion
-    setopt prompt_subst
-
-    # set screen title
-    PR_STITLE=$'%{\ekzsh\e\\%}'
-
-    # set titlebar text
-    PR_TITLEBAR=$'%{\e_screen \005 (\005t) | %(!.-=[ROOT]=- | .)%n@%m:%~ \e\\%}'
-    
-    # ???
-    PS1='abc'
-    export PS1
-    
-    # set prompt
-    PROMPT='$(prompt_return)$PR_STITLE${(e)PR_TITLEBAR}%m:%~%<<$(prompt_char)%{$reset_color%} '
-    RPROMPT='%? %*'
-} # 2}}}
-
-setoptions() {
-    # correct mistyped commands
-    setopt correct
-
-    # auto cd when command doesn't exist and is a directory name
-    setopt autocd
-    
-    # push the old dir onto the dir stack and ignore duplicates
-    setopt auto_pushd
-    setopt pushd_ignore_dups
-
-    # append history and ignore duplicates
-    setopt append_history
-    setopt hist_ignore_all_dups
-
-    # load colors
-    autoload -U colors && colors
-
-    # rationalise-dot
-    rationalise-dot() {
-        if [[ $LBUFFER = *.. ]]; then
-            LBUFFER+=/..
-        else
-            LBUFFER+=.
-        fi
-    }
-    zle -N rationalise-dot
-    bindkey . rationalise-dot
-
-    # source pkgfiles command-not-found handler
-    if [[ -s "/usr/share/doc/pkgfile/command-not-found.zsh" ]]; then
-        source "/usr/share/doc/pkgfile/command-not-found.zsh"
-    fi
-}
-# }}}
-
-# keybindings {{{
-setkeybindings() {
-    # for linux console and RH/Debian xterm
-    bindkey "\e[1~" beginning-of-line
-    bindkey "\e[4~" end-of-line
-    bindkey "\e[5~" beginning-of-history
-    bindkey "\e[6~" end-of-history
-    bindkey "\e[7~" beginning-of-line
-    bindkey "\e[3~" delete-char
-    bindkey "\e[2~" quoted-insert
-    bindkey "\e[5C" forward-word
-    bindkey "\e[5D" backward-word
-    bindkey "\e\e[C" forward-word
-    bindkey "\e\e[D" backward-word
-    bindkey "\e[1;5C" forward-word
-    bindkey "\e[1;5D" backward-word
-
-    # for rxvt
-    bindkey "\e[8~" end-of-line
-
-    # for non RH/Debian xterm, can't hurt for RH/DEbian xterm
-    bindkey "\eOH" beginning-of-line
-    bindkey "\eOF" end-of-line
-
-    # for freebsd console
-    bindkey "\e[H" beginning-of-line
-    bindkey "\e[F" end-of-line
-
-    # search
-    bindkey '^[[A' history-beginning-search-backward
-    bindkey '^[[B' history-beginning-search-forward
-} # }}}
-
-# windowtitle {{{
-settitle() {
-    if [[ $TERM == "screen" ]]; then
-        #PR_STITLE=$'%{\ek'$1$'\e\\%}'
-        local title; title=$1
-        if [ ${#title} -gt 12 ]; then
-            title="${title:0:10}.."
-        fi
-        # http://superuser.com/a/249322
-        printf "\033k$title\033\\"
-    fi
-}
-
-preexec() {
-    emulate -L zsh
-    local -a cmd; cmd=(${(z)1})
-    local title; title="$cmd[1]"
-    local prgs; prgs=(vim v ssh scp man sudo s  mplayer zathura info)
-    local rpls; rpls=(v   v s   scp m   ''   '' mpl     z       i)
-    local i; i=0
-    for p in $prgs; do
-        (( i++ ))
-        if [ "$title" = "$p" ]; then
-            local param; param=$(basename $cmd[2] 2>/dev/null)
-            title="$rpls[$i]~$param"
-            break;
-        fi
-    done
-    settitle "$title"
-}
-# }}}
-
-# some other stuff {{{
-if [ "$TERM" != "dumb" ]; then
-    eval "`dircolors -b`"
-    alias ls='ls -hF --color=auto'
-    alias grep='grep --color'
-    alias rsync='rsync -h'
-fi
-
-# autostart tmux
-[[ -z "$TMUX" ]] && tmux attach && exit
-
-# tetris \o/
-autoload -U tetris
-zle -N tetris
-bindkey ^T tetris
-
-# vi keys - show mode: http://zshwiki.org/home/examples/zlewidgets
-
-# ccache
-export PATH="/usr/lib/ccache/bin/:$PATH"
-export CCACHE_DIR="$cacheDir/ccache"
-
-# stty (else ^S freeze terminal until ^Q)
-stty start undef
-stty stop undef
-# }}}
-
-# execute functions {{{
-setcomplete
-sethistory
-setprompt
-setoptions
-setkeybindings
-setalias
-# }}}
 # vim:foldmethod=marker
