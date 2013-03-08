@@ -6,6 +6,7 @@ loadPlugin command-not-found
 loadPlugin prompt-git
 loadPlugin prompt-char
 loadPlugin prompt-return
+loadPlugin videolength
 loadPlugin tetris
 
 # alias {{{1
