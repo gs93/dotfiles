@@ -92,7 +92,7 @@ alias -g H='| head -n'
 alias -g W='| wc'
 alias -g LL='2>&1 | less'
 alias -g CA='2>&1 | cat -A'
-alias -g NO='2>/dev/null'
+alias -g NO='>/dev/null'
 alias -g NE='2>/dev/null'
 alias -g SP=' |& curl -F sprunge=@- sprunge.us'
 # 2}}}
