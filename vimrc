@@ -42,6 +42,8 @@ colorscheme desert
 
 " enable ftplugins (see ~/.vim/ftplugin/)
 filetype plugin on
+au BufRead,BufNewFile *.pde set filetype=arduino
+au BufRead,BufNewFile *.ino set filetype=arduino
 
 " folding
 set foldmethod=marker
