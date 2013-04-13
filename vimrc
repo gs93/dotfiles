@@ -44,6 +44,7 @@ colorscheme desert
 filetype plugin on
 au BufRead,BufNewFile *.pde set filetype=arduino
 au BufRead,BufNewFile *.ino set filetype=arduino
+au BufRead,BufNewFile *.md set filetype=markdown
 
 " folding
 set foldmethod=marker
