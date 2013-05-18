@@ -30,6 +30,7 @@ export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 #exec openbox-session
 #exec awesome
 #exec dwm
-exec startdwm
+#exec startdwm
+exec i3
 # ...or the Window Manager of your choice
 #exec xterm
