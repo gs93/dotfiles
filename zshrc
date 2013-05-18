@@ -11,9 +11,10 @@ loadPlugin tetris
 
 # alias {{{1
 # functions {{{2
-cdd() {
-    cd "${1}" && ls ;
+c() {
+    cd "${1}" && ls
 }
+compdef c='cd'
 
 rmrecent() {
     shred -un 3 $HOME/.local/share/recently-used.xbel
