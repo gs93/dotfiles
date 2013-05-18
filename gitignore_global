@@ -2,3 +2,5 @@
 #
 # vim swap files
 .*.swp
+# dia backup files
+*.dia~
