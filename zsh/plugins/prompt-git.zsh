@@ -15,12 +15,12 @@ if (( $+commands[git] )); then
     }
 
     git_mode() {
-        local repo_path=$(git_repo_path)
-        if [[ -e $repo_path/BISECT_LOG ]]; then
+        local repo_path="$(git_repo_path)"
+        if [[ -e "$repo_path/BISECT_LOG" ]]; then
             echo "$git_prompt_mode_prefix+bisect$git_prompt_mode_postfix"
-        elif [[ -e $repo_path/MERGE_HEAD ]]; then
+        elif [[ -e "$repo_path/MERGE_HEAD" ]]; then
             echo "$git_prompt_mode_prefix+merge$git_prompt_mode_postfix"
-        elif [[ -e $repo_path/rebase || -e $repo_path/rebase-apply || -e $repo_path/rebase-merge || -e $repo_path/../.dotest ]]; then
+        elif [[ -e "$repo_path/rebase" || -e "$repo_path/rebase-apply" || -e "$repo_path/rebase-merge" || -e "$repo_path/../.dotest" ]]; then
             echo "$git_prompt_mode_prefix+rebase$git_prompt_mode_postfix"
         fi
     }
@@ -34,7 +34,7 @@ if (( $+commands[git] )); then
     }
 
     git_prompt() {
-        local repo_path=$(git_repo_path)
-        [[ -n $repo_path ]] && echo "$git_prompt_prefix$(git_branch)$(git_sha1_short)$(git_mode)$(git_dirty)$git_prompt_postfix"
+        local repo_path="$(git_repo_path)"
+        [[ -n "$repo_path" ]] && echo "$git_prompt_prefix$(git_branch)$(git_sha1_short)$(git_mode)$(git_dirty)$git_prompt_postfix"
     }
 fi
