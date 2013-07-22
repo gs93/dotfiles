@@ -25,6 +25,11 @@ cpl() {
     # TODO: if number use PID (-p), if text use program (-e), if slash use path (-P)
     sudo cpulimit -l $1 -p $2 -z;
 }
+
+cpr() {
+    rsync -av --progress "$@"
+    echo -e "\a"
+}
 # 2}}}
 
 # hashes {{{2
@@ -37,7 +42,6 @@ hash -d study=$HOME/documents/box/study
 alias lsg='ls --color=auto | grep -i'
 alias la='ls -al'
 alias -- -='cd -'
-alias cpr='rsync -av --progress'
 alias ndu='ncdu -r'
 alias smart='sudo smartctl -H'
 # 2}}}
