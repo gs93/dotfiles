@@ -60,8 +60,6 @@ alias whenn='when w --noheader'
 alias youtube-mp3='youtube-dl --title --extract-audio --audio-format mp3'
 alias dmsg='watch -n 1 dmesg -Tx \| tail -n'
 alias cppcheck='cppcheck --enable=all --platform=unix64 --report-progress --std=c++11'
-alias screen-add='$HOME/.screenlayout/home.sh && sleep 3s && nitrogen --restore'
-alias screen-remove='xrandr --output VGA2 --off'
 alias zshsource="source $HOME/.zshrc"
 # 2}}}
 
