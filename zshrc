@@ -99,7 +99,7 @@ alias -g LL='2>&1 | less'
 alias -g CA='2>&1 | cat -A'
 alias -g NO='>/dev/null'
 alias -g NE='2>/dev/null'
-alias -g SP=' |& curl -F sprunge=@- sprunge.us'
+alias -g SP=' | curl -F "sprunge=<-" http://sprunge.us'
 # 2}}}
 # 1}}}
 # vim:foldmethod=marker
