@@ -16,7 +16,7 @@ xset +fp /usr/share/fonts/local
 xset fp rehash
 
 xsetroot -cursor_name left_ptr
-setxkbmap -model pc104 -layout de -variant nodeadkeys
+setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl
 xrdb $HOME/.config/Xresources
 xmodmap $HOME/.config/Xmodmap
 
