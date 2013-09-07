@@ -89,6 +89,7 @@ alias pacref="( $aurUpdate & ); sudo pacman -Sy ; $refreshWidget"
 # 2}}}
 
 # global {{{2
+alias -g A='; echo -e "\a"'
 alias -g G='| grep'
 alias -g L='| less'
 alias -g T='| tail -n'
