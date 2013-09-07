@@ -1,6 +1,7 @@
 # pacman -Qs vim- | grep local | grep -vE "(ranger|vim-runtime)" | cut -c7- | awk '{print $1}'
 vim-a
 vim-clang-complete-git
+vim-detectindent
 vim-doxygentoolkit
 vim-minibufexpl
 vim-nerdtree

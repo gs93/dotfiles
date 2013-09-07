@@ -129,3 +129,9 @@ au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
 " }}}
 
+"" detect indent {{{
+let g:detectindent_preferred_expandtab = 1
+let g:detectindent_preferred_indent = 4
+autocmd BufReadPost *.?pp :DetectIndent
+autocmd BufReadPost *.[cChH] :DetectIndent
+" }}}
