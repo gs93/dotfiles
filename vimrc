@@ -9,6 +9,9 @@ set number
 set incsearch
 " highlight results
 set hlsearch
+" ignore case
+set ignorecase
+set smartcase
 
 " convert tab into 4 spaces
 set expandtab
