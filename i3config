@@ -35,7 +35,7 @@ bindsym XF86AudioMute           $cmd audiomute
 bindsym XF86AudioStop           exec urxvtc -name mpd -e ncmpcpp
 bindsym XF86AudioMedia          exec urxvtc -name mpd -e ncmpcpp
 
-bindsym XF86WWW                 exec dwb
+bindsym XF86HomePage            exec dwb
 bindsym XF86Mail                exec claws-mail
 bindsym XF86Calculator          exec galculator
 
