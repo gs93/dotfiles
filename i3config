@@ -40,6 +40,9 @@ bindsym XF86Mail                exec claws-mail
 bindsym XF86Calculator          exec galculator
 
 bindsym control+shift+l         exec commands.sh lock
+
+bindsym Print                   $cmd screenshot
+bindsym Pause                   $cmd screenshot-selection
 # 1}}}
 
 # border style {{{1
