@@ -1,0 +1,27 @@
+[user]
+	name = Giuliano Schneider
+	email = gs93@gmx.net
+
+[push]
+	default = matching
+
+[color]
+    ui = auto
+
+[credential]
+    helper = store
+
+[core]
+    excludesfile = ~/.gitignore_global
+
+[alias]
+    c   = commit -m
+    co  = commit
+    b   = checkout
+    d   = diff
+    ds  = diff --stat
+    s   = status
+    p   = push
+    pa  = push --all
+    ff  = merge --ff-only
+    staged  = diff --cached
