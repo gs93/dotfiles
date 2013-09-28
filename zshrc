@@ -7,6 +7,7 @@ loadPlugin prompt-git
 loadPlugin prompt-char
 loadPlugin prompt-return
 loadPlugin videolength
+loadPlugin fasd
 loadPlugin syntax-highlighting
 loadPlugin tetris
 
