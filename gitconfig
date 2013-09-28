@@ -17,6 +17,7 @@
 [alias]
     c   = commit -m
     co  = commit
+    a   = add
     b   = checkout
     d   = diff
     ds  = diff --stat
