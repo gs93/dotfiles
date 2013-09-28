@@ -1,9 +1,9 @@
 [user]
-	name = Giuliano Schneider
-	email = gs93@gmx.net
+    name = Giuliano Schneider
+    email = gs93@gmx.net
 
 [push]
-	default = matching
+    default = matching
 
 [color]
     ui = auto
