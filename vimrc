@@ -116,9 +116,6 @@ let g:clang_complete_copen = 1
 let g:clang_complete_auto = 1
 " complete preprocessor macros and constants
 let g:clang_complete_macros = 1
-" use lib 
-let g:clang_library_path = "/usr/lib/llvm"
-let g:clang_use_library = 1
 "
 let g:clang_snippets_engine = "ultisnips"
 " close suggestion window
