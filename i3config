@@ -18,7 +18,7 @@ set $vga_monitor VGA2
 bindsym $mod+t border 1pixel
 bindsym $mod+z border none
 
-# multimedia keys {{{1
+# shortcuts {{{1
 set $cmd exec commands.sh
 bindsym XF86AudioPlay           $cmd audioplay
 bindsym KP_Begin                $cmd audioplay
@@ -54,6 +54,11 @@ force_display_urgency_hint 2000 ms
 
 bindsym $mod+u [urgent="oldest"] focus
 bindsym $mod+shift+u [urgent="latest"] focus
+
+# Make the currently focused window a scratchpad
+bindsym $mod+q move scratchpad
+# Show the first scratchpad window
+bindsym $mod+z scratchpad show
 
 # move stuff to monitor {{{1
 bindsym $mod+ctrl+shift+h move workspace to output left
