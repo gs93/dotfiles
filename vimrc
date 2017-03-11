@@ -210,6 +210,9 @@ call plug#end()
 
     let g:limelight_conceal_ctermfg = 'darkgray'
     let g:syntastic_tex_checkers = ['lacheck']
+
+    autocmd FileType tex setlocal spell
+    set spelllang=de,en
 " }
 
 "" General Programming
