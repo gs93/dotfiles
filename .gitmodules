@@ -1,0 +1,72 @@
+[submodule ".vim/plugged/goyo.vim"]
+	path = .vim/plugged/goyo.vim
+	url = https://github.com/junegunn/goyo.vim.git
+[submodule ".vim/plugged/ctrlp.vim"]
+	path = .vim/plugged/ctrlp.vim
+	url = https://github.com/ctrlpvim/ctrlp.vim.git
+[submodule ".vim/plugged/delimitMate"]
+	path = .vim/plugged/delimitMate
+	url = https://github.com/Raimondi/delimitMate.git
+[submodule ".vim/plugged/detectindent"]
+	path = .vim/plugged/detectindent
+	url = https://github.com/ciaranm/detectindent.git
+[submodule ".vim/plugged/fonts"]
+	path = .vim/plugged/fonts
+	url = https://github.com/powerline/fonts.git
+[submodule ".vim/plugged/limelight.vim"]
+	path = .vim/plugged/limelight.vim
+	url = https://github.com/junegunn/limelight.vim.git
+[submodule ".vim/plugged/neocomplete.vim"]
+	path = .vim/plugged/neocomplete.vim
+	url = https://github.com/Shougo/neocomplete.vim.git
+[submodule ".vim/plugged/nerdtree"]
+	path = .vim/plugged/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
+[submodule ".vim/plugged/rust.vim"]
+	path = .vim/plugged/rust.vim
+	url = https://github.com/rust-lang/rust.vim.git
+[submodule ".vim/plugged/syntastic"]
+	path = .vim/plugged/syntastic
+	url = https://github.com/vim-syntastic/syntastic.git
+[submodule ".vim/plugged/vim-airline-themes"]
+	path = .vim/plugged/vim-airline-themes
+	url = https://github.com/vim-airline/vim-airline-themes.git
+[submodule ".vim/plugged/vim-airline"]
+	path = .vim/plugged/vim-airline
+	url = https://github.com/vim-airline/vim-airline.git
+[submodule ".vim/plugged/vim-bufferline"]
+	path = .vim/plugged/vim-bufferline
+	url = https://github.com/bling/vim-bufferline.git
+[submodule ".vim/plugged/vim-colors-solarized"]
+	path = .vim/plugged/vim-colors-solarized
+	url = https://github.com/altercation/vim-colors-solarized.git
+[submodule ".vim/plugged/vim-easy-align"]
+	path = .vim/plugged/vim-easy-align
+	url = https://github.com/junegunn/vim-easy-align.git
+[submodule ".vim/plugged/vim-go"]
+	path = .vim/plugged/vim-go
+	url = https://github.com/fatih/vim-go.git
+[submodule ".vim/plugged/vimtex"]
+	path = .vim/plugged/vimtex
+	url = https://github.com/lervag/vimtex.git
+[submodule ".vim/plugged/vim-racer"]
+	path = .vim/plugged/vim-racer
+	url = https://github.com/racer-rust/vim-racer.git
+[submodule ".vim/plugged/vim-markdown"]
+	path = .vim/plugged/vim-markdown
+	url = https://github.com/plasticboy/vim-markdown.git
+[submodule ".vim/plugged/vim-toml"]
+	path = .vim/plugged/vim-toml
+	url = https://github.com/cespare/vim-toml.git
+[submodule ".vim/plugged/vim-wordy"]
+	path = .vim/plugged/vim-wordy
+	url = https://github.com/reedes/vim-wordy.git
+[submodule ".vim/plugged/vim-surround"]
+	path = .vim/plugged/vim-surround
+	url = https://github.com/tpope/vim-surround.git
+[submodule ".vim/plugged/wildfire.vim"]
+	path = .vim/plugged/wildfire.vim
+	url = https://github.com/gcmt/wildfire.vim.git
+[submodule ".vim/plugged/ultisnips"]
+	path = .vim/plugged/ultisnips
+	url = https://github.com/SirVer/ultisnips.git

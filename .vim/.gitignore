@@ -1,0 +1,5 @@
+info
+view/*
+!view/.gitkeep
+spell/*.spl
+spell/*.add
