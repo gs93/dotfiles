@@ -55,8 +55,8 @@ set foldmethod=marker
 " views
 set viewoptions=cursor,folds
 " periodic: find ~/.vim/view -type f -mtime +365 -delete
-au BufWinLeave *? mkview
-au BufWinEnter *? silent loadview
+au BufWinLeave * if expand("%") != "" | mkview | endif
+au BufWinEnter * if expand("%") != "" | loadview | endif
 
 " move from ~/.viminfo to .vim/viminfo
 set viminfo+=n$HOME/.vim/info
