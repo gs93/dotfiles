@@ -101,7 +101,6 @@ Plug 'powerline/fonts', { 'do': './install.sh' }
 Plug 'bling/vim-bufferline'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'altercation/solarized'
-Plug 'luochen1990/rainbow', { 'on': 'RainbowToggle' }
 
 " Writing
 Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
@@ -143,8 +142,6 @@ call plug#end()
     imap <C-e> <Esc>:NERDTreeToggle<CR>
     map <C-e> :NERDTreeToggle<CR>
 
-    " Rainbow
-    let g:rainbow_active = 0
 " }
 
 "" Writing {
@@ -180,9 +177,12 @@ call plug#end()
 "" General Programming
 let g:neocomplete#enable_at_startup = 1
 
-"" Rust
-let g:ycm_rust_src_path = '~/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src/'
-let g:racer_experimental_completer = 1
+"" Rust {
+    let $RUST_SRC_PATH = $HOME . '/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src/'
+    let g:syntastic_rust_checkers = ['rustc']
+    let g:racer_experimental_completer = 1
+    au FileType rust nmap gd <Plug>(rust-def)
+" }
 
 "" Go {
     let g:go_highlight_functions = 1
