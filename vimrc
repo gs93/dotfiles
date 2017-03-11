@@ -217,20 +217,6 @@ for buffer_no in range(10, 100)
     execute "nmap <Leader>0" . buffer_no . " :b" . buffer_no . "\<CR>"
 endfor
 
-"" clang_complete
-" automatically select the first entry in the popup menu, but without inserting it into the code
-let g:clang_auto_select = 0
-" open quickfix window on error
-let g:clang_complete_copen = 1
-" automatically complete after ->, ., ::
-let g:clang_complete_auto = 1
-" complete preprocessor macros and constants
-let g:clang_complete_macros = 1
-"
-let g:clang_snippets_engine = "ultisnips"
-" close suggestion window
-au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
-
 "" detect indent
 let g:detectindent_preferred_expandtab = 1
 let g:detectindent_preferred_indent = 4
