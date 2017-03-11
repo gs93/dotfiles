@@ -4,3 +4,5 @@
 .*.swp
 # dia backup files
 *.dia~
+# pacman generated packages
+*.pkg.tar.xz
