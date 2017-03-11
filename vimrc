@@ -7,6 +7,9 @@ set nocompatible
 " show numbers on the left side
 set number
 
+" mode is shown by airline
+set noshowmode
+
 "" search
 " incremental
 set incsearch
@@ -26,7 +29,6 @@ set shiftwidth=4
 " set encryptionmethod (:X)
 set cryptmethod=blowfish2
 
-"" shortcuts
 " set ^s to save
 map <C-s> :w<CR>
 imap <C-s> <Esc>:w<CR>a
@@ -40,7 +42,14 @@ command! -bar -nargs=0 SudoW :silent exe "write !sudo tee % >/dev/null" | silent
 set autoindent
 "set cindent
 
-" set colorcheme
+" colorcheme
+function! s:patch_desert_colors()
+    hi clear SpellBad
+    hi clear SpellCap
+    hi SpellBad cterm=underline ctermfg=red
+    hi SpellCap cterm=underline ctermfg=white
+endfunction
+autocmd! ColorScheme desert call s:patch_desert_colors()
 colorscheme desert
 
 " enable ftplugins (see ~/.vim/ftplugin/)
