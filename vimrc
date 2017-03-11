@@ -33,6 +33,9 @@ set cryptmethod=blowfish2
 map <C-s> :w<CR>
 imap <C-s> <Esc>:w<CR>a
 
+" don't force save
+set hidden
+
 "" commands
 " write as root
 command! -bar -nargs=0 SudoW :silent exe "write !sudo tee % >/dev/null" | silent edit!
