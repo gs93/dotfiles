@@ -112,27 +112,32 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'powerline/fonts', { 'do': './install.sh' }
 Plug 'bling/vim-bufferline'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'altercation/solarized'
+Plug 'altercation/vim-colors-solarized'
+
+" Little helper
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'tpope/vim-surround'
+Plug 'junegunn/vim-easy-align', { 'on': 'EasyAlign' }
+Plug 'Raimondi/delimitMate'
+Plug 'gcmt/wildfire.vim'
+Plug 'SirVer/ultisnips'
 
 " Writing
 Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
 Plug 'junegunn/limelight.vim', { 'on': 'Limelight' }
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
-Plug 'reedes/vim-wordy', { 'for': [ 'markdown', 'tex' ] }
 Plug 'lervag/vimtex', { 'for': 'tex' }
+Plug 'reedes/vim-wordy', { 'on': 'Wordy', 'for': [ 'markdown', 'tex' ] }
 
 " General Programming
 Plug 'Shougo/neocomplete.vim', { 'for': [ 'cpp', 'c', 'go', 'rust' ] }
-Plug 'ciaranm/detectindent'
+Plug 'ciaranm/detectindent', { 'on': 'DetectIndent' }
 Plug 'vim-syntastic/syntastic'
-Plug 'SirVer/ultisnips'
-Plug 'gcmt/wildfire.vim'
-Plug 'tpope/vim-surround'
 
 " Rust
 Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer', { 'for': 'rust' }
-Plug 'Valloric/YouCompleteMe', { 'for': [ 'rust' ], 'do': './install.py' }
+Plug 'cespare/vim-toml'
 
 " Go
 Plug 'fatih/vim-go', { 'for': 'go' }
@@ -153,7 +158,21 @@ call plug#end()
     let NERDTreeIgnore = ['.o$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$']
     imap <C-e> <Esc>:NERDTreeToggle<CR>
     map <C-e> :NERDTreeToggle<CR>
+" }
 
+"" Little helper {
+    "let g:ctrlp_cmd = 'CtrlPBuffer'
+    let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
+    if executable('rg')
+        let g:ctrlp_user_command = 'rg --files %s'
+        set grepprg=rg\ --smart-case\ --vimgrep
+        set grepformat=%f:%l:%c:%m,%f:%l:%m
+    endif
+    set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.exe
+
+    let g:UltiSnipsSnippetsDir = $HOME . '/.vim/UltiSnips/'
+    let g:UltiSnipsJumpForwardTrigger ="<c-f>"
+    let g:UltiSnipsJumpBackwardTrigger ="<c-b>"
 " }
 
 "" Writing {
@@ -183,7 +202,14 @@ call plug#end()
     let g:goyo_height = '100%'
     autocmd! User GoyoEnter nested call <SID>goyo_enter()
     autocmd! User GoyoLeave nested call <SID>goyo_leave()
+
+    let g:vimtex_view_method = 'zathura'
+    let g:vimtex_latexmk_build_dir = 'build'
+    let g:vimtex_fold_enabled = 1
+    let g:tex_flavor = 'latex'
+
     let g:limelight_conceal_ctermfg = 'darkgray'
+    let g:syntastic_tex_checkers = ['lacheck']
 " }
 
 "" General Programming
