@@ -8,3 +8,5 @@ export COLUMNS
 export CTEST_OUTPUT_ON_FAILURE=1
 # let make use 5 threads
 export MAKEFLAGS=-j5
+# go
+export GOPATH=~/dev/go
