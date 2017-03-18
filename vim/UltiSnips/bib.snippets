@@ -1,0 +1,11 @@
+snippet online "Cite from website"
+@online{$1,
+	title   = {$2},
+	author  = {$3},
+	date    = {$4},
+	url     = {$5},
+	urldate = {${6:`date -I`}},
+}
+
+$0
+endsnippet
