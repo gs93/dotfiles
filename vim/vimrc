@@ -1,8 +1,12 @@
-" syntax highlighting
-syntax on
-
 " use vim settings
 set nocompatible
+
+if filereadable(expand("~/.vim/vimrc.local"))
+    source ~/.vim/vimrc.local
+endif
+
+" syntax highlighting
+syntax on
 
 " show numbers on the left side
 set number
@@ -109,10 +113,12 @@ call plug#begin('~/.vim/plugged')
 " Appearance
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'powerline/fonts', { 'do': './install.sh' }
 Plug 'bling/vim-bufferline'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'altercation/vim-colors-solarized'
+if !exists('g:vimrc_headless')
+    Plug 'powerline/fonts', { 'do': './install.sh' }
+endif
 
 " Little helper
 Plug 'ctrlpvim/ctrlp.vim'
