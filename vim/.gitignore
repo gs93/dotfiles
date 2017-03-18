@@ -3,3 +3,4 @@ view/*
 !view/.gitkeep
 spell/*.spl
 spell/*.add
+autoload/plug.vim.old
