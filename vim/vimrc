@@ -114,6 +114,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'bling/vim-bufferline'
+Plug 'mhinz/vim-startify'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'altercation/vim-colors-solarized'
 if !exists('g:vimrc_headless')
@@ -127,6 +128,8 @@ Plug 'junegunn/vim-easy-align', { 'on': 'EasyAlign' }
 Plug 'Raimondi/delimitMate'
 Plug 'gcmt/wildfire.vim'
 Plug 'SirVer/ultisnips'
+Plug 'easymotion/vim-easymotion'
+Plug 'haya14busa/vim-easyoperator-line'
 
 " Writing
 Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
