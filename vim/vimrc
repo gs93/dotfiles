@@ -31,7 +31,9 @@ set tabstop=4
 set shiftwidth=4
 
 " set encryptionmethod (:X)
-set cryptmethod=blowfish2
+if !has('nvim')
+    set cryptmethod=blowfish2
+endif
 
 " set ^s to save
 map <C-s> :w<CR>
@@ -75,7 +77,11 @@ au BufWinLeave * if expand("%") != "" | mkview | endif
 au BufWinEnter * if expand("%") != "" | loadview | endif
 
 " move from ~/.viminfo to .vim/viminfo
-set viminfo+=n$HOME/.vim/info
+if !has('nvim')
+    set viminfo+=n$HOME/.vim/info
+else
+    set viminfo+=n$HOME/.vim/ninfo
+endif
 
 " allow color schemes to do bright colors without forcing bold
 if &t_Co == 8 && $TERM !~# '^linux\|^Eterm'
