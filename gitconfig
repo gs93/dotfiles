@@ -33,3 +33,9 @@
 
 [branch]
     autosetuprebase = always
+
+[fetch]
+    fsckobjects = true
+
+[transfer]
+    fsckobjects = true
