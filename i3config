@@ -86,7 +86,6 @@ bindsym $mod+ctrl+shift+Right move workspace to output right
 
 # windows {{{1
 for_window [title="Buddy List"] floating enable
-for_window [title="- Skype™$"] floating enable
 for_window [class="Gtick"] floating enable
 for_window [class="Galculator"] floating enable
 for_window [class="Keepassx"] floating enable
@@ -96,11 +95,8 @@ for_window [class="Anki"] floating enable
 for_window [class="Arandr"] floating enable
 for_window [class="Runanki"] floating enable
 for_window [title="^SFML"] floating enable
-for_window [class="qxtractor"] floating enable
-for_window [class="Mullvad"] floating enable
-for_window [class="Godot"] floating enable
-for_window [class="Godot" title="^Godot Engine"] floating disable
 for_window [class="TeamViewer"] floating enable
+for_window [class="usbguard-applet-qt"] floating enable
 
 # presentation window (b = Presentation Mode ["TITLE.odp - LibreOffice Impress"], c = Slides ["LibreOffice 4.3"])
 for_window [class="Soffice" title="- LibreOffice Impress$"]  move to workspace b, move workspace to output $laptop_monitor,   focus, fullscreen enable
@@ -111,21 +107,14 @@ assign [class="Chromium"] 2
 assign [class="Dwb"] 2
 assign [class="Claws-mail"] 2
 assign [class="Pidgin"] 3
-assign [class="Skype"] 3
 assign [class="skypeforlinux"] 3
 assign [class="Ts3client_linux_amd64"] 3
 assign [title="Qt Creator"] 4
 assign [title="qtcreator_process_stub"] 4
-assign [class="Atom"] 4
-assign [class="Godot"] 4
 assign [class="liteide"] 4
-assign [class="jetbrains-idea"] 4
-assign [class="Eclipse"] 4
 assign [class="Gitg"] 4
 assign [class="Dia"] 4
-assign [class="Gummi"] 4
 assign [class="Doxywizard"] 4
-assign [class="mplayer2"] 5
 assign [class="mpv"] 5
 assign [class="Gpicview"] 5
 assign [class="teeworlds"] 5
