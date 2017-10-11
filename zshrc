@@ -7,6 +7,10 @@ loadPlugin prompt-git
 loadPlugin prompt-char
 loadPlugin prompt-return
 
+zbell_duration=10
+zbell_ignore=(vim less zathura ssh mpv livestreamer youtube.sh optirun)
+loadPlugin zbell
+
 # alias {{{1
 # functions {{{2
 c() {

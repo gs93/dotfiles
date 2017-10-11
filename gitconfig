@@ -3,7 +3,7 @@
     email = gs93@gmx.net
 
 [push]
-    default = matching
+    default = simple
 
 [color]
     ui = auto
@@ -13,6 +13,9 @@
 
 [core]
     excludesfile = ~/.gitignore_global
+
+[rebase]
+    stat = true
 
 [alias]
     c   = commit -m
@@ -24,5 +27,15 @@
     s   = status
     p   = push
     pa  = push --all
+    ll  = pull
     ff  = merge --ff-only
     staged  = diff --cached
+
+[branch]
+    autosetuprebase = always
+
+[fetch]
+    fsckobjects = true
+
+[transfer]
+    fsckobjects = true

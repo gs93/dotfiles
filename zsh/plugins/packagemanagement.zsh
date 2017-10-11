@@ -16,7 +16,7 @@ if (( $+commands[pacman] )); then # it's arch linux
     fi
     alias pacrep='pacman -Si'
     if (( $+commands[paccache] )); then
-        alias pacopt='paccache -vr && sudo pacman-optimize; du -hs /var/cache/pacman/'
+        alias pacopt='paccache -vrk 2; paccache -vruk 0; du -hs /var/cache/pacman/'
     fi
     alias pacunused='pacman -Qdtq | sudo pacman -Rs -'
 elif (( $+commands[apt-get] )); then # it's debian

@@ -4,8 +4,10 @@
 
 #[[ -f ~/.zshrc ]] && . ~/.zshrc
 
+source /etc/profile.d/freetype2.sh
+
 if [ "$(tty)" = "/dev/tty1" ]; then
     clear
-	startx -- -nolisten tcp vt01 >/home/gl/.cache/tmp/startx.log 2>&1
-	logout
+    startx -- -nolisten tcp
+    logout
 fi
