@@ -3,7 +3,7 @@ autoload -U colors && colors
 
 if [ "$TERM" != "dumb" ]; then
     eval "`dircolors -b`"
-    export GREP_OPTIONS="$GREP_OPTIONS --color=auto"
+    alias grep='grep --color=auto'
     export LESS="$LESS -R"
 
     # ls doesn't support export
